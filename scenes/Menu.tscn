@@ -1,0 +1,87 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://assets/audio/music/menu.wav" type="AudioStream" id=1]
+[ext_resource path="res://assets/images/backgrounds/demo03_PixelSky.png" type="Texture" id=2]
+[ext_resource path="res://assets/fonts/NokiaCellphoneFC.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://assets/fonts/standar_text.tres" type="DynamicFont" id=4]
+[ext_resource path="res://scripts/Menu/Menu.gd" type="Script" id=5]
+[ext_resource path="res://assets/fonts/title_text.tres" type="DynamicFont" id=6]
+
+[sub_resource type="DynamicFont" id=4]
+size = 40
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+extra_spacing_bottom = 30
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 20
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 3 )
+
+[node name="Menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 5 )
+
+[node name="BgMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+volume_db = -10.0
+autoplay = true
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 272, -5.99999 )
+rotation = 1.5708
+scale = Vector2( 2.02974, 2.02974 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -107.0
+margin_bottom = 107.0
+
+[node name="title" type="Label" parent="VBoxContainer"]
+margin_right = 270.0
+margin_bottom = 50.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 6 )
+text = "Space"
+align = 1
+valign = 1
+
+[node name="title2" type="Label" parent="VBoxContainer"]
+margin_top = 54.0
+margin_right = 270.0
+margin_bottom = 134.0
+custom_colors/font_color = Color( 1, 0.94902, 0, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "Shooter"
+align = 1
+valign = 1
+
+[node name="start" type="Button" parent="VBoxContainer"]
+margin_top = 138.0
+margin_right = 270.0
+margin_bottom = 179.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 0.952941, 0.843137, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "Start"
+flat = true
+
+[node name="exit" type="Button" parent="VBoxContainer"]
+margin_top = 183.0
+margin_right = 270.0
+margin_bottom = 214.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 0.843137, 0.843137, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "Exit"
+flat = true
+
+[connection signal="pressed" from="VBoxContainer/start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/exit" to="." method="_on_exit_pressed"]
